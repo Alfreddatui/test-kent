@@ -1,0 +1,34 @@
+<html>
+<head><title>Calculator</title>
+	<script>
+		
+	</script>
+</head>
+<body>
+	<h1> Retirement Calculator</h1>
+	
+    <p>x</p>
+    <input type= number id="x" name="first" min="1">
+    <br>
+    <br>
+    <p>y</p>
+    <input type= number id="y" name="second" min="1">
+	<br><br>
+	<button onclick="calculate()">calculate</button>
+    <p id="demo"></p>
+</body>
+
+	
+<script>
+    let x = document.getElementById("x");
+    let y = document.getElementById("y");
+    let result = document.getElementById("demo");
+
+    function calculate(){
+        fetch(`http://localhost:3000/calculator?x=${x.value}&y=${y.value}`).then(response => response.json())
+        .then(data => {
+            result.innerHTML = data.name;
+        });
+    }
+</script>
+</html>
